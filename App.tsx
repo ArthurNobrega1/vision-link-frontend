@@ -6,6 +6,7 @@ import { StatusBar, View } from "react-native";
 import { Routes } from "src/routes";
 import { useEffect, useState } from "react";
 import Buddy from "@screens/Buddy";
+import Login from "@screens/Login";
 
 export default function App() {
   const [fontLoaded] = useFonts({ DMSans_400Regular })
@@ -27,7 +28,7 @@ export default function App() {
           backgroundColor={'transparent'}
           translucent
         />
-        {fontLoaded ? (showBuddy ? <Buddy /> : <Routes />) : <Loading />}
+        {fontLoaded ? (true ? <Login /> : <Routes />) : <Loading />}
       </ThemeProvider>
     </View>
   )
