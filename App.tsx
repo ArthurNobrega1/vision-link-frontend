@@ -27,7 +27,7 @@ export default function App() {
           backgroundColor={'transparent'}
           translucent
         />
-        {false ? (showBuddy ? <Buddy /> : <Routes />) : <Login />}
+        {false ? (showBuddy ? <Buddy /> : <Routes />) : <Loading />}
       </ThemeProvider>
     </View>
   )
