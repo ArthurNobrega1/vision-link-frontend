@@ -13,7 +13,8 @@ const theme = {
     },
     FONT_SIZE: {
         SM: 16,
-        MD: 20
+        MD: 20,
+        LG: 24,
     }
 }
 
