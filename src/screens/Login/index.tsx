@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Logo, Title, InputContainer, Input, Button, ButtonText } from "./styles";
+import { Container, LogoContainer, Logo, Title, InputContainer, Input, ForgotPassword, ButtonContainer, LoginButton, SignUpButton, ButtonText } from "./styles";
 import logoImg from "@assets/logo.png";
 import { Alert } from "react-native";
 
@@ -15,32 +15,47 @@ export default function Login() {
     console.log("Logando com:", email, password);
   };
 
+  const handleForgotPassword = () => {
+    Alert.alert("Recuperação de Senha", "Funcionalidade em desenvolvimento.");
+  };
+
+  const handleSignUp = () => {
+    Alert.alert("Criar Conta", "Funcionalidade em desenvolvimento.");
+  };
+
   return (
     <Container>
-      <Logo source={logoImg} accessibilityLabel="Logo Vision Link!" />
-      <Title>Bem-vindo(a)</Title>
+      <LogoContainer>
+      <Logo source={logoImg} />
+      <Title>A inclusão através da tecnologia</Title>
+      </LogoContainer>
+
+      <Title>Login</Title>
       
       <InputContainer>
-        <Input
-          placeholder="Email"
-          value={email}
+      <Input
+          placeholder="Digite seu e-mail..." 
+          value={email} 
           onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          accessibilityLabel="Campo de Email"
-        />
-        <Input
+      />
+      <Input
           placeholder="Senha"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
-          accessibilityLabel="Campo de Senha"
-        />
-      </InputContainer>
+      />
+      <ForgotPassword>Esqueci minha senha</ForgotPassword>
+  </InputContainer>
 
-      <Button onPress={handleLogin} accessibilityLabel="Botão de Login">
-        <ButtonText>Entrar</ButtonText>
-      </Button>
-    </Container>
+      
+  <ButtonContainer>
+      <LoginButton>
+          <ButtonText>Entrar</ButtonText>
+      </LoginButton>
+      <SignUpButton>
+          <ButtonText>Criar conta</ButtonText>
+      </SignUpButton>
+  </ButtonContainer>
+</Container>
   );
 }
