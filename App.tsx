@@ -7,6 +7,7 @@ import { Routes } from "src/routes";
 import { useEffect, useState } from "react";
 import Buddy from "@screens/Buddy";
 import Login from "@screens/Login";
+import Register from "@screens/Register";
 
 export default function App() {
   const [fontLoaded] = useFonts({ DMSans_400Regular })
@@ -28,7 +29,7 @@ export default function App() {
           backgroundColor={'transparent'}
           translucent
         />
-        {fontLoaded ? (true ? <Login /> : <Routes />) : <Loading />}
+        {fontLoaded ? (true ? <Register /> : <Routes />) : <Loading />}
       </ThemeProvider>
     </View>
   )
