@@ -1,54 +1,49 @@
 import styled from "styled-components/native";
-import { TextInput, TouchableOpacity } from "react-native";
-
+import { TouchableOpacity } from "react-native";
 
 export const Container = styled.View`
   flex: 1;
   align-items: center;
+  background-color: ${({ theme }) => theme.COLORS.SECONDARY_300};
   justify-content: center;
 `;
 
-export const LogoContainer = styled.View`
+export const Header = styled.View`
+  position: absolute;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 250px;
+  border-bottom-right-radius: 200px;
+  border-bottom-left-radius: 200px;
+  top: 0;
+  background-color: ${({ theme }) => theme.COLORS.PRIMARY_200};
   align-items: center;
-  margin-bottom: 20px;
 `;
 
 export const Logo = styled.Image`
-  width: 120px;
-  height: 120px;
-  margin-bottom: 10px;
+  width: 100px;
+  height: 100px;
 `;
 
 export const Title = styled.Text`
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   color: ${({ theme }) => theme.COLORS.SECONDARY_200};
-  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  font-family: ${({ theme }) => theme.FONT_FAMILY.ITALIC};
   margin-bottom: 20px;
 `;
 
 export const InputContainer = styled.View`
-  width: 85%;
+  width: 75%;
+  gap: 6px;
   margin-bottom: 20px;
-  background-color: ${({ theme }) => theme.COLORS.SECONDARY_200};
   border-radius: 20px;
   align-items: center;
 `;
 
-export const Input = styled(TextInput)`
-  width: 100%;
-  height: 50px;
-  background-color: ${({ theme }) => theme.COLORS.WHITE};
-  border-radius: 25px;
-  padding: 10px 20px;
-  margin-bottom: 10px;
-  border-width: 1px;
-  border-color: ${({ theme }) => theme.COLORS.PRIMARY_200};
-`;  
-
 export const ForgotPassword = styled.Text`
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.FONT_SIZE["2XS"]}px;
+  width: 75%;
   color: ${({ theme }) => theme.COLORS.PRIMARY_200};
-  margin-bottom: 20px;
 `;
 
 export const ButtonContainer = styled.View`
@@ -60,27 +55,52 @@ export const ButtonContainer = styled.View`
 
 export const LoginButton = styled(TouchableOpacity)`
   flex: 1;
-  height: 50px;
-  background-color: ${({ theme }) => theme.COLORS.PRIMARY_100};
+  height: 40px;
+  background-color: ${({ theme }) => theme.COLORS.PRIMARY_300};
   border-radius: 25px;
   align-items: center;
   justify-content: center;
   margin-right: 10px;
 `;
 
-
 export const SignUpButton = styled.TouchableOpacity`
   flex: 1;
-  height: 50px;
+  height: 40px;
   border-radius: 25px;
   align-items: center;
   justify-content: center;
-  border-width: 1px;
-  border-color: ${({ theme }) => theme.COLORS.PRIMARY_100};
+  border-width: 2px;
+  border-color: ${({ theme }) => theme.COLORS.PRIMARY_300};
 `;
 
-export const ButtonText = styled.Text`
-  font-size: 16px;
+export const SignUpButtonText = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.XS}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
-  color: ${({ theme }) => theme.COLORS.PRIMARY_100};
+  color: ${({ theme }) => theme.COLORS.PRIMARY_200};
+`;
+
+export const LoginButtonText = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.XS}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  color: ${({ theme }) => theme.COLORS.SECONDARY_200};
+`;
+
+export const Main = styled.View`
+    justify-content: center;
+    margin-top: 140px;
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    background-color: ${({ theme }) => theme.COLORS.SECONDARY_200};
+    border-radius: 20px;
+`
+
+export const MainTitle = styled.Text`
+  letter-spacing: 1px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  color: ${({ theme }) => theme.COLORS.PRIMARY_200};
+  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: bold;
 `;
