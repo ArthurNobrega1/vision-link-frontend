@@ -1,35 +1,34 @@
 import { ThemeProvider } from "styled-components/native";
 import theme from "./src/theme";
-import { useFonts, DMSans_400Regular } from "@expo-google-fonts/dm-sans";
+import { DMSans_400Regular } from "@expo-google-fonts/dm-sans";
 import Loading from "@screens/Loading";
 import { StatusBar, View } from "react-native";
 import { Routes } from "src/routes";
 import { useEffect, useState } from "react";
 import Buddy from "@screens/Buddy";
-import Login from "@screens/Login";
-import Register from "@screens/Register";
+import { CormorantGaramond_400Regular_Italic, useFonts } from "@expo-google-fonts/cormorant-garamond";
 
 export default function App() {
-  const [fontLoaded] = useFonts({ DMSans_400Regular })
+  const [fontsLoaded] = useFonts({
+    DMSans_400Regular,
+    CormorantGaramond_400Regular_Italic
+  })
   const [showBuddy, setShowBuddy] = useState(true)
 
   useEffect(() => {
-    if (fontLoaded) {
+    if (fontsLoaded) {
       const timer = setTimeout(() => {
         setShowBuddy(false)
       }, 9000)
-
       return () => clearTimeout(timer)
     }
-  }, [fontLoaded])
+  }, [fontsLoaded])
+
   return (
     <View style={{ flex: 1, backgroundColor: theme.COLORS.PRIMARY_200 }}>
       <ThemeProvider theme={theme}>
-        <StatusBar
-          backgroundColor={'transparent'}
-          translucent
-        />
-        {fontLoaded ? (true ? <Register /> : <Routes />) : <Loading />}
+        <StatusBar backgroundColor="transparent" translucent />
+        {fontsLoaded ? (showBuddy ? <Buddy /> : <Routes />) : <Loading />}
       </ThemeProvider>
     </View>
   )
