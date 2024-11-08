@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Container, Header, Logo, Title, ForgotPassword, ButtonContainer, LoginButton, SignUpButton, Main, MainTitle, InputContainer, LoginButtonText, SignUpButtonText } from "./styles";
 import logoImg from "@assets/logo.png";
 import { Alert } from "react-native";
 import InputLogin from "@components/InputLogin";
 import axios from "axios";
 import { API_URL } from "@env";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Login() {
   const [userIdentifier, setUserIdentifier] = useState("")
   const [password, setPassword] = useState("")
+
+  const navigation = useNavigation()
+
+  const handleGoToRegister = useCallback(() => {
+    navigation.navigate('register')
+  }, [navigation])
 
   const handleSubmit = async () => {
     try {
@@ -60,7 +67,7 @@ export default function Login() {
           <LoginButton onPress={handleSubmit}>
             <LoginButtonText>Entrar</LoginButtonText>
           </LoginButton>
-          <SignUpButton>
+          <SignUpButton onPress={handleGoToRegister}>
             <SignUpButtonText>Criar conta</SignUpButtonText>
           </SignUpButton>
         </ButtonContainer>

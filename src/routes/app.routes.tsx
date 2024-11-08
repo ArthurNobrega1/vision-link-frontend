@@ -7,12 +7,22 @@ import General from "@screens/General";
 import Account from "@screens/Account";
 import Security from "@screens/Security";
 import Privacy from "@screens/Privacy";
+import Register from "@screens/Register";
+import Login from "@screens/Login";
 
 const {Navigator, Screen} = createNativeStackNavigator()
 
 export function AppRoutes() {
     return (
         <Navigator screenOptions={{headerShown: false}}>
+            <Screen
+                name="login"
+                component={Login}
+            />
+            <Screen
+                name="register"
+                component={Register}
+            />
             <Screen
                 name="home"
                 component={Home}

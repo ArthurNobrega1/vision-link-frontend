@@ -6,7 +6,6 @@ import { StatusBar, View } from "react-native";
 import { Routes } from "src/routes";
 import { useEffect, useState } from "react";
 import Buddy from "@screens/Buddy";
-import Login from "@screens/Login";
 import { CormorantGaramond_400Regular_Italic, useFonts } from "@expo-google-fonts/cormorant-garamond";
 
 export default function App() {
@@ -29,7 +28,7 @@ export default function App() {
     <View style={{ flex: 1, backgroundColor: theme.COLORS.PRIMARY_200 }}>
       <ThemeProvider theme={theme}>
         <StatusBar backgroundColor="transparent" translucent />
-        {fontsLoaded ? (true ? <Login /> : <Routes />) : <Loading />}
+        {fontsLoaded ? (showBuddy ? <Buddy /> : <Routes />) : <Loading />}
       </ThemeProvider>
     </View>
   )

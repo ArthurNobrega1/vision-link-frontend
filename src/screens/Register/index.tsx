@@ -1,10 +1,11 @@
 import { Arrow, ArrowText, Button, Buttons, ButtonText, Congruent, CongruentText, Container, Form, Header, Main, Title } from "./styles";
 import { AccessibilityInfo, Alert, KeyboardTypeOptions, ScrollView } from "react-native";
 import { findNodeHandle } from "react-native";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import InputRegister from "@components/InputRegister";
 import axios from "axios";
 import { API_URL } from '@env';
+import { useNavigation } from "@react-navigation/native";
 
 type IInput = {
     placeholder: string
@@ -85,6 +86,12 @@ export default function Register() {
         return () => clearTimeout(timeout);
     }, [])
 
+    const navigation = useNavigation()
+
+    const handleGoToLogin = useCallback(() => {
+        navigation.navigate('login')
+    }, [navigation])
+
     const handleSubmit = async () => {
         const { password, confirmPassword, ...rest } = formData;
 
@@ -97,16 +104,15 @@ export default function Register() {
             await axios.post(`${API_URL}/users/`, {
                 ...rest,
                 password
-            });
-            Alert.alert('Sucesso', 'Conta criada com sucesso!');
+            })
+            Alert.alert('Sucesso', 'Conta criada com sucesso!')
+            handleGoToLogin()
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 const errorMessage = error.response?.data?.message || 'Erro desconhecido'
                 Alert.alert('Erro', errorMessage)
-                console.log('Erro:', errorMessage)
             } else {
                 Alert.alert('Erro', 'Erro desconhecido')
-                console.log('Erro: Desconhecido')
             }
         }
     }
@@ -122,7 +128,7 @@ export default function Register() {
         <Container>
             <Header>
                 <Buttons>
-                    <Arrow>
+                    <Arrow onPress={handleGoToLogin}>
                         <ArrowText>&lt;</ArrowText>
                     </Arrow>
                     <Congruent>
