@@ -17,6 +17,10 @@ export default function Login() {
     navigation.navigate('register')
   }, [navigation])
 
+  const handleGoToHome = useCallback(() => {
+    navigation.navigate('home')
+  }, [navigation])
+
   const handleSubmit = async () => {
     try {
       await axios.post(`${API_URL}/sessions/`, {
@@ -24,15 +28,14 @@ export default function Login() {
         username: userIdentifier,
         password
       })
-      Alert.alert('Sucesso', 'Conta logada com sucesso!');
+      Alert.alert('Sucesso', 'Conta logada com sucesso!')
+      handleGoToHome()
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorMessage = error.response?.data?.message || 'Erro desconhecido'
         Alert.alert('Erro', errorMessage)
-        console.log('Erro:', errorMessage)
       } else {
         Alert.alert('Erro', 'Erro desconhecido')
-        console.log('Erro: Desconhecido')
       }
     }
   }
