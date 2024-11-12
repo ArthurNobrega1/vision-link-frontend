@@ -6,6 +6,7 @@ import InputLogin from "@components/InputLogin";
 import axios from "axios";
 import { API_URL } from "@env";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
   const [userIdentifier, setUserIdentifier] = useState("")
@@ -23,11 +24,15 @@ export default function Login() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post(`${API_URL}/sessions/`, {
+      const response = await axios.post(`${API_URL}/sessions/`, {
         email: userIdentifier,
         username: userIdentifier,
         password
       })
+
+      const token = response.data.token
+      await AsyncStorage.setItem('@userToken', token)
+
       Alert.alert('Sucesso', 'Conta logada com sucesso!')
       handleGoToHome()
     } catch (error) {
