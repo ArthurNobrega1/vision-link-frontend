@@ -2,28 +2,26 @@ import { ImageSourcePropType } from "react-native";
 import { UserData, UserDataText, UserImage, UserImageDefault, UserImageDefaultText } from "./styles";
 
 type Props = {
-    userName: string
+    userFullname: string
     userEmail: string
     userPhone: string
-    userPassword: string
-    userImagePath: ImageSourcePropType | undefined
+    userAvatar: ImageSourcePropType | null
 }
 
-export default function InfoAccount({ userName, userEmail, userPhone, userPassword, userImagePath }: Props) {
+export default function InfoAccount({ userFullname, userEmail, userPhone, userAvatar }: Props) {
     return (
         <>
-            {userImagePath ? (
-                <UserImage source={userImagePath} />
+            {userAvatar ? (
+                <UserImage source={userAvatar} />
             ) : (
                 <UserImageDefault>
                     <UserImageDefaultText>FOTO DO USUÁRIO</UserImageDefaultText>
                 </UserImageDefault>
             )}
             <UserData>
-                <UserDataText>Nome: {userName ? userName : ''}</UserDataText>
+                <UserDataText>Nome: {userFullname ? userFullname : ''}</UserDataText>
                 <UserDataText>E-mail: {userEmail ? userEmail : ''}</UserDataText>
                 <UserDataText>Telefone: {userPhone ? userPhone : ''}</UserDataText>
-                <UserDataText>Senha: {userPassword ? userPassword : ''}</UserDataText>
             </UserData>
         </>
     )
