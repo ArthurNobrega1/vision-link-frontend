@@ -36,3 +36,12 @@ gap: 50px;
 height: 100%;
 margin: 40px 0;
 `
+
+export const LoadIndicator = styled.ActivityIndicator.attrs(({ theme }) => ({
+    accessibilityLabel: "Carregando!",
+    color: theme.COLORS.SECONDARY_200
+}))`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+`
