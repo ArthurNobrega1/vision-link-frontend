@@ -1,11 +1,29 @@
-# Vision Link
+# Vision Link (Frontend)
 
 - App mobile para se comunicar com ferramenta que auxilia a locomoção de deficientes visuais
 - vamos usar as seguintes tecnologias: 
    - Typescript
    - React Native
-   - Firestore
-   - Firebase
+
+## Instalação
+Para rodar o projeto, siga os seguintes passos:
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/ArthurNobrega1/vision-link-frontend.git
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+3. Inicie o projeto:
+   ```bash
+   npm start
+   ```
+4. Após rodar o comando npm start, você pode escanear o QR Code gerado no terminal com o aplicativo Expo Go no seu smartphone para testar a aplicação (Lembre de estar na mesma ).
+
+* Alternativa: Se preferir, pode configurar uma SDK para emular o aplicativo diretamente no terminal. Instale o SDK por algum programa como o Android Studio. Após iniciar com npm start, pressione 'a' para abrir no emulador
 
 ## Padrão de commits
 Utilizaremos como padrão de commits o conventional commits, são basicamente uma formalização das mensagens de commits. Isso vai facilitar o acompanhamento de mudanças.
