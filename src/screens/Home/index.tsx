@@ -24,10 +24,10 @@ export default function Home() {
     return (
         <Container>
             <Header>
-                <Buttons>
+                {/* <Buttons>
                     <ArrowText>&lt;</ArrowText>
                     <CongruentText>&equiv;</CongruentText>
-                </Buttons>
+                </Buttons> */}
                 <WelcomeText ref={welcomeTextRef}>Seja bem vindo ao Vision Link</WelcomeText>
             </Header>
             <Main>
