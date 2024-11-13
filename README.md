@@ -18,13 +18,22 @@ Para rodar o projeto, siga os seguintes passos:
    npm install
    ```
 
-3. Inicie o projeto:
+3. Crie um arquivo .env baseado no .env.example que existe no repositório
+ 
+4. Configure a URL da API utilizada no aplicativo:
+   ```bash
+   # URL da API usada no aplicativo
+   API_URL=http://10.0.2.2:3333  # Exemplo para uso local no emulador
+   ```
+   * Observação: Para usar o localhost no React Native, utilize o endereço http://10.0.2.2, que é um endereço especial para acessar o servidor local em um emulador Android.
+
+5. Inicie o projeto:
    ```bash
    npm start
    ```
-4. Após rodar o comando npm start, você pode escanear o QR Code gerado no terminal com o aplicativo Expo Go no seu smartphone para testar a aplicação (Lembre de estar na mesma ).
+6. Após rodar o comando npm start, você pode escanear o QR Code gerado no terminal com o aplicativo Expo Go no seu smartphone para testar a aplicação (Lembre de estar na mesma ).
 
-* Alternativa: Se preferir, pode configurar uma SDK para emular o aplicativo diretamente no terminal. Instale o SDK por algum programa como o Android Studio. Após iniciar com npm start, pressione 'a' para abrir no emulador
+   * Observação: Se preferir, pode configurar uma SDK para emular o aplicativo diretamente no terminal. Instale o SDK por algum programa como o Android Studio. Após iniciar com npm start, pressione 'a' para abrir no emulador
 
 ## Padrão de commits
 Utilizaremos como padrão de commits o conventional commits, são basicamente uma formalização das mensagens de commits. Isso vai facilitar o acompanhamento de mudanças.
