@@ -7,25 +7,16 @@ import { Alert } from "react-native";
 import { API_URL } from "@env";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { getToken } from "src/utils/token";
 
 export default function PersonalData() {
+    const navigation = useNavigation()
+
     const [userDataLoaded, setUserDataLoaded] = useState(false)
     const [userEmail, setUserEmail] = useState('')
     const [userAvatar, setUserAvatar] = useState(null)
     const [userUsername, setUserUsername] = useState('')
-
-    const getToken = async () => {
-        try {
-            const token = await AsyncStorage.getItem('@userToken')
-            if (token === null) {
-                Alert.alert('Token não encontrado')
-            } else {
-                return token
-            }
-        } catch (error) {
-            Alert.alert('Erro', '"Erro ao recuperar o token')
-        }
-    }
 
     const handleGetUserData = async () => {
         try {
@@ -47,6 +38,13 @@ export default function PersonalData() {
             if (axios.isAxiosError(error)) {
                 const errorMessage = error.response?.data?.message || 'Erro desconhecido'
                 Alert.alert('Erro', errorMessage)
+                if (errorMessage === 'Sessão inválida') {
+                    await AsyncStorage.removeItem('@userToken')
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'login' }]
+                    })
+                }
             } else {
                 Alert.alert('Erro', 'Erro desconhecido')
             }
