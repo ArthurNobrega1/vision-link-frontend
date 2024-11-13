@@ -4,6 +4,7 @@
 - vamos usar as seguintes tecnologias: 
    - Typescript
    - React Native
+   - Expo
 
 ## Instalação
 Para rodar o projeto, siga os seguintes passos:
