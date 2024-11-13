@@ -15,8 +15,6 @@ export default function Settings() {
                 <NavSettings name={'Conta'} link="account" />
                 <NavSettings name={'Segurança'} link="security" />
                 <NavSettings name={'Privacidade'} link="privacy" />
-                <NavSettings name={'Ajuda'} link="general" />
-                <NavSettings name={'Sobre'} link="general" />
             </Main>
             <BuddyArea>
                 <Buddy source={buddyImg} />

@@ -3,13 +3,9 @@ import { Container, NameElement } from "./styles";
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import theme from "src/theme";
 import { useCallback } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Alert } from "react-native";
 
-type RootParamList = {
-    home: undefined
-    settings: undefined
-    devices: undefined
-    personalData: undefined
-}
 
 type FeatherNameType = keyof typeof Feather.glyphMap;
 type FontAwesome5NameType = keyof typeof FontAwesome5.glyphMap;
@@ -17,17 +13,40 @@ type FontAwesome5NameType = keyof typeof FontAwesome5.glyphMap;
 type Props = {
     name: string;
     nameIcon: string;
-    link: keyof RootParamList;
+    link: keyof ReactNavigation.RootParamList;
     iconType: "Feather" | "FontAwesome5";
 }
 
 export default function NavPersonalData({ name, nameIcon, link, iconType }: Props) {
-    const navigation = useNavigation();
+    const navigation = useNavigation()
 
     const handleGoToPage = useCallback(() => {
-        navigation.navigate(link);
-    }, [navigation, link]);
-    
+        if (link === 'login') {
+            Alert.alert(
+                "Confirmar ação",
+                "Tem certeza de que deseja sair da conta?",
+                [
+                    {
+                        text: "Cancelar",
+                        style: "cancel"
+                    },
+                    {
+                        text: "Sim",
+                        onPress: async () => {
+                            await AsyncStorage.removeItem('@userToken')
+                            navigation.reset({
+                                index: 0,
+                                routes: [{ name: link }]
+                            })
+                        }
+                    }
+                ]
+            );
+        } else {
+            navigation.navigate(link)
+        }
+    }, [navigation, link])
+
 
     return (
         <Container onPress={handleGoToPage}>

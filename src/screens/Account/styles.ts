@@ -31,3 +31,11 @@ export const Buddy = styled.Image.attrs({
     height: 230px;
     width: 150px;
 `
+
+export const LoadIndicator = styled.ActivityIndicator.attrs(({ theme }) => ({
+    accessibilityLabel: "Carregando!",
+    color: theme.COLORS.PRIMARY_200
+}))`
+    align-items: center;
+    justify-content: center;
+`

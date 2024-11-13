@@ -47,6 +47,7 @@ export const BuddyArea = styled.View.attrs({
 `
 
 export const Buddy = styled.Image`
-    align-self: flex-end;
-    margin-right: 50px;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
 `

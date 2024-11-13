@@ -19,7 +19,10 @@ export default function Login() {
   }, [navigation])
 
   const handleGoToHome = useCallback(() => {
-    navigation.navigate('home')
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'home' }]
+    })
   }, [navigation])
 
   const handleSubmit = async () => {
