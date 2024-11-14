@@ -9,9 +9,9 @@ export default function Security() {
                 <Title>Segurança</Title>
             </Header>
             <Main>
-                <NavSubSettings name={'Alterar senha'} />
-                <NavSubSettings name={'Verificação Duas Etapas'} />
-                <NavSubSettings name={'Excluir conta'} />
+                <NavSubSettings link="home" name={'Alterar senha'} />
+                <NavSubSettings link="home" name={'Verificação Duas Etapas'} />
+                <NavSubSettings link="login" name={'Excluir conta'} />
             </Main>
             <Buddy source={buddyImg} />
         </Container>

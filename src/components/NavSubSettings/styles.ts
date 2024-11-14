@@ -34,3 +34,12 @@ export const ArrowText = styled.Text`
     font-size: 50px;
     color: ${({ theme }) => theme.COLORS.PRIMARY_200};
 `
+
+export const LoadIndicator = styled.ActivityIndicator.attrs(({ theme }) => ({
+    accessibilityLabel: "Carregando!",
+    color: theme.COLORS.SECONDARY_200
+}))`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+`
