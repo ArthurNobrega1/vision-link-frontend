@@ -55,4 +55,7 @@ export const UserDataAge = styled.Text`
 export const UserImage = styled.Image.attrs({
     accessibilityLabel: "Foto do Usuário!"
 })`
+    align-items: center;
+    padding: 60px;
+    border-radius: 100px;
 `

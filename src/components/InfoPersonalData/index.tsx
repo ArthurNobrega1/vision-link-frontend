@@ -8,6 +8,9 @@ type Props = {
 }
 
 export default function InfoPersonalData({ userUsername, userEmail, userAvatar }: Props) {
+    const avatarSource = userAvatar 
+        ? { uri: typeof userAvatar === 'string' ? userAvatar : undefined } 
+        : undefined
     return (
         <Container>
             <UserDataField>
@@ -17,7 +20,7 @@ export default function InfoPersonalData({ userUsername, userEmail, userAvatar }
                 </UserData>
             </UserDataField>
             {userAvatar ? (
-                <UserImage source={userAvatar} />
+                <UserImage source={avatarSource} />
             ) : (
                 <UserImageDefault>
                     <UserImageDefaultText>FOTO DO USUÁRIO</UserImageDefaultText>
