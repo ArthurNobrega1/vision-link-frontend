@@ -41,10 +41,10 @@ export default function InputRegister({
             />
             {
                 iconType === 'Ionicons'
-                    ? <Ionicons name={iconName as IonicsNameType} size={iconSize} color={theme.COLORS.PRIMARY_200} />
+                    ? <Ionicons accessibilityLabel={'Ícone da Caixa de Edição!'} name={iconName as IonicsNameType} size={iconSize} color={theme.COLORS.PRIMARY_200} />
                     : iconType === 'FontAwesome'
-                        ? <FontAwesome name={iconName as FontAwesomeNameType} size={iconSize} color={theme.COLORS.PRIMARY_200} />
-                        : <Fontisto name={iconName as FontistoNameType} size={iconSize} color={theme.COLORS.PRIMARY_200} />
+                        ? <FontAwesome accessibilityLabel={'Ícone da Caixa de Edição!'} name={iconName as FontAwesomeNameType} size={iconSize} color={theme.COLORS.PRIMARY_200} />
+                        : <Fontisto accessibilityLabel={'Ícone da Caixa de Edição!'} name={iconName as FontistoNameType} size={iconSize} color={theme.COLORS.PRIMARY_200} />
             }
         </Input>
     )
