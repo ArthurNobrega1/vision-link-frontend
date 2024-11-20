@@ -1,18 +1,33 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Container, Header, Logo, Title, ForgotPassword, ButtonContainer, LoginButton, SignUpButton, Main, MainTitle, InputContainer, LoginButtonText, SignUpButtonText } from "./styles";
 import logoImg from "@assets/logo.png";
-import { Alert } from "react-native";
+import { Alert, findNodeHandle } from "react-native";
 import InputLogin from "@components/InputLogin";
 import axios from "axios";
 import { API_URL } from "@env";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AccessibilityInfo } from "react-native";
 
 export default function Login() {
   const [userIdentifier, setUserIdentifier] = useState("")
   const [password, setPassword] = useState("")
 
   const navigation = useNavigation()
+  const mainTextRef = useRef(null)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (mainTextRef.current) {
+        const node = findNodeHandle(mainTextRef.current)
+        if (node) {
+          AccessibilityInfo.setAccessibilityFocus(node)
+        }
+      }
+    }, 100)
+
+    return () => clearTimeout(timeout);
+  }, [])
 
   const handleGoToRegister = useCallback(() => {
     navigation.navigate('register')
@@ -56,7 +71,7 @@ export default function Login() {
       </Header>
 
       <Main>
-        <MainTitle>Login</MainTitle>
+        <MainTitle ref={mainTextRef}>Login</MainTitle>
         <InputContainer>
           <InputLogin
             description="E-mail ou nome do usuário"
@@ -84,5 +99,5 @@ export default function Login() {
         </ButtonContainer>
       </Main>
     </Container >
-  );
+  )
 }

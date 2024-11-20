@@ -20,7 +20,9 @@ export const Header = styled.View`
   align-items: center;
 `;
 
-export const Logo = styled.Image`
+export const Logo = styled.Image.attrs({
+  accessibilityLabel: "Logo Vision Link!"
+})`
   width: 100px;
   height: 100px;
 `;
